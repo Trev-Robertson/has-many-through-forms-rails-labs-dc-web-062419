@@ -34,7 +34,7 @@ Comment: <%= form_for @post do |f|%>
         <%= f.fields_for @comment do |c| %>
         <%= c.text_field :content%>
         <%end%>
-        <%= f.submit "Add Comment"%>
+        <%= f.submit%>
         <%end%>
 
 <%=link_to "See All Available Posts", posts_path%><br>
