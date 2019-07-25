@@ -1,0 +1,10 @@
+<h1>Users</h1>
+
+<%@users.all.each do |user|%>
+<p><%= link_to user.username, user_path(user)%></p>
+<%end%>
+
+<br>
+<br>
+<br>
+<%=link_to "See All Available Posts", posts_path%><br>

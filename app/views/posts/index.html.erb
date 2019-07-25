@@ -1,0 +1,7 @@
+<% @posts.each do |post|%>
+<p><%=link_to post.title, post_path(post) %></p>
+<%end%>
+<br>
+<br>
+
+<%= link_to "See All Users", users_path%>

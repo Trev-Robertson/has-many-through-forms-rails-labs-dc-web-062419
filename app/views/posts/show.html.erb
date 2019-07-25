@@ -1,1 +1,41 @@
+Title: <%=@post.title%>
+<br>
+<br>
+<br>
+Content: <%=@post.content%>
+<br>
+<br>
+<br>
+Unique Users: <% a = @post.comments.map do |comment|%>
+                    <%comment.user%>
+                        <%end%>
+                        <%a.uniq!%>
+                <%a.each do |user|%>
+                <%if !user.nil? && !user.username.nil?%>
+                <ul> <%= link_to user.username, user_path(user)%></ul>
+                <%end%>
+                <%end%>
 
+<br>
+<br>
+<br>
+Categories: <%@post.post_categories.each do |p_category|%>
+            <%=p_category.category.name%>
+            <%end%>
+<br>
+Comments: <%@post.comments.each do |comment|%>
+            <li> <%=link_to comment.content, user_path(comment.user)%></li>
+            <%end%>
+
+<br>
+Comment: <%= form_for @post do |f|%>
+
+        <%= f.collection_select(:user_ids, User.all, :id, :username) %>
+        <%= f.fields_for @comment do |c| %>
+        <%= c.text_field :content%>
+        <%end%>
+        <%= f.submit "Add Comment"%>
+        <%end%>
+
+<%=link_to "See All Available Posts", posts_path%><br>
+<%= link_to "See All Users", users_path%>

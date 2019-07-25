@@ -1,1 +1,17 @@
+<%=@user.username%>
+<br>
+<br>
 
+
+
+Posts Ive commented on <br>
+<%@user.comments.each do |comment|%>
+<%if !comment.post.nil?%>
+<li> <%= link_to comment.post.title, post_path(comment.post)%></li>
+<%end%>
+<%end%>
+<br>
+<br>
+<br>
+<%=link_to "See All Available Posts", posts_path%>
+<%= link_to "See All Users", users_path%>
